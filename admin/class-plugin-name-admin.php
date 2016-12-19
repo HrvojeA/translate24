@@ -100,6 +100,8 @@ class Plugin_Name_Admin {
 
 	}
 
+
+
 	public function add_plugin_admin_menu() {
 
 		/*
@@ -110,9 +112,14 @@ class Plugin_Name_Admin {
          *        Administration Menus: http://codex.wordpress.org/Administration_Menus
          *
          */
-		add_options_page( 'Translate24 Dashboard', 'Translate24', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page')
+
+		add_action( 'admin_menu', 'my_admin_menu' );
+ 
+
+		add_menu_page( 'Translate24 Dashboard', 'Translate24', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page')
 		);
 	}
+
 
 	public function add_action_links( $links ) {
 		/*
