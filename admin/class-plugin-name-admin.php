@@ -113,28 +113,42 @@ class Plugin_Name_Admin {
          *
          */
 
-		add_action( 'admin_menu', 'my_admin_menu' );
- 
 
-		add_menu_page( 'Translate24 Dashboard', 'Translate24', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page')
-		);
-	}
+		add_menu_page( 'Translate24 Dashboard', 'Dashboard', 'manage_options', $this->plugin_name, array($this, 'display_translate24_dashboard')	);
+
+
+		/*
+		 *  Adds a submenu page that corresponds for every of the pages needed, e.g. "Tickets", "Operators", "Overview"...
+		 *
+		 */
+		add_submenu_page($this->plugin_name, 'Tickets - Translate24', 'Tickets', 'manage_options', 'tickets',array($this, 'display_translate24_tickets')	 );
+
+		/*
+		 *
+		 *
+		 */
+		add_submenu_page($this->plugin_name, 'Operators - Translate24 ', 'Operators', 'manage_options', 'operators',array($this, 'display_translate24_tickets')	 );
+
+
+
+ 	}
+
 
 
 	public function add_action_links( $links ) {
 		/*
         *  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
         */
-		$settings_link = array(
-			'<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_name ) . '">' . __('Settings', $this->plugin_name) . '</a>',
-		);
+		$settings_link = array('<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_name ) . '">' . __('Settings', $this->plugin_name) . '</a>', );
 		return array_merge(  $settings_link, $links );
 
 	}
-	public function display_plugin_setup_page() {
+	public function display_translate24_dashboard() {
 		include_once( 'partials/plugin-name-admin-display.php' );
 	}
-
+	public function display_translate24_tickets() {
+		include_once( 'partials/plugin-name-admin-display.php' );
+	}
 
 
 }

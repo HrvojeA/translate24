@@ -68,7 +68,7 @@ class Plugin_Name {
 	 */
 	public function __construct() {
 
-		$this->plugin_name = 'plugin-name';
+		$this->plugin_name = 'translate-24';
 		$this->version = '1.0.0';
 
 		$this->load_dependencies();
