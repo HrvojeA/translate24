@@ -124,7 +124,7 @@ class Plugin_Name_Admin {
 		add_submenu_page($this->plugin_name, 'Tickets - Translate24', 'Tickets', 'manage_options', 'tickets',array($this, 'display_translate24_tickets')	 );
 
 		/*
-		 *
+		 * Should be accessible only to super administrator
 		 *
 		 */
 		add_submenu_page($this->plugin_name, 'Operators - Translate24 ', 'Operators', 'manage_options', 'operators',array($this, 'display_translate24_tickets')	 );
@@ -147,7 +147,7 @@ class Plugin_Name_Admin {
 		include_once( 'partials/plugin-name-admin-display.php' );
 	}
 	public function display_translate24_tickets() {
-		include_once( 'partials/plugin-name-admin-display.php' );
+		include_once( 'partials/tickets-display.php' );
 	}
 
 
