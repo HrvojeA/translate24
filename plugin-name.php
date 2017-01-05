@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 /**
  * The plugin bootstrap file
  *
@@ -67,6 +70,15 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-plugin-name.php';
  *
  * @since    1.0.0
  */
+const PROJECT_NAME = 'libar';
+
+
+$GLOBALS['t24_plugin_dir'] = plugin_dir_path(__FILE__);
+
+require_once($GLOBALS['t24_plugin_dir'].'admin/lib/AjaxInterface.php');
+require_once($GLOBALS['t24_plugin_dir'].'admin/lib/TicketsController.php');
+
+
 function run_plugin_name() {
 
 	$plugin = new Plugin_Name();
@@ -107,6 +119,7 @@ function remove_menus()
 
 
 add_action('admin_menu', 'remove_menus');
+add_action('admin_enqueue_scripts', 'translate24_enqueue_script');
 
 
  

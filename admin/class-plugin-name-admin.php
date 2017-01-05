@@ -51,8 +51,8 @@ class Plugin_Name_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+ 	}
 
-	}
 
 	/**
 	 * Register the stylesheets for the admin area.
@@ -73,7 +73,11 @@ class Plugin_Name_Admin {
 		 * class.
 		 */
 
+
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/plugin-name-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name.'/datatables.min.css',   'https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css', array(), $this->version, 'all' );
+
+
 
 	}
 
@@ -96,8 +100,11 @@ class Plugin_Name_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/plugin-name-admin.js', array( 'jquery' ), $this->version, false );
 
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/plugin-name-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name.'/jquery', 'https://code.jquery.com/jquery-1.12.4.min.js', array( 'jquery' ),  $this->version, true);
+
+		wp_enqueue_script( $this->plugin_name.'/datatables',  plugin_dir_url( __FILE__ ) .'js/jquery.dataTables.js', array( 'jquery' ),  $this->version, true);
 	}
 
 
@@ -147,8 +154,23 @@ class Plugin_Name_Admin {
 		include_once( 'partials/plugin-name-admin-display.php' );
 	}
 	public function display_translate24_tickets() {
-		include_once( 'partials/tickets-display.php' );
+		include_once( 'partials/tickets-display.php' ); 
 	}
 
+	public function listTickets($operator_id = NULL){
+
+		if($operator_id == NULL){
+
+
+
+
+		}
+		global $wpdb;
+
+		$results = $wpdb->get_results("SELECT * FROM t24_tickets ");
+
+
+		var_dump($results);
+	}
 
 }

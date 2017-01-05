@@ -48,6 +48,8 @@ class Plugin_Name_Loader {
 	 */
 	public function __construct() {
 
+
+
 		$this->actions = array();
 		$this->filters = array();
 
@@ -115,10 +117,13 @@ class Plugin_Name_Loader {
 	 * @since    1.0.0
 	 */
 	public function run() {
+		add_action('admin_enqueue_scripts', 'translate24_enqueue_script');
 
 		foreach ( $this->filters as $hook ) {
 			add_filter( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
 		}
+
+
 
 		foreach ( $this->actions as $hook ) {
 			add_action( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
