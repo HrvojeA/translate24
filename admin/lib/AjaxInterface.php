@@ -66,17 +66,19 @@ function tickets_datatables_callback() {
 
          $row = array();
 
-        $row[] = $ticket->id;
+        $row[] = $ticket->id_ticket;
         $row[] = $ticket->fullname;
         $row[] = $ticket->address;
-        $row[] = $ticket->dateTime;
-        $row[] = 'customerid';
-        $row[] = 'orig_lang';
+        $row[] = '#';
+        $row[] = $ticket->zipcode;
+        $row[] = $ticket->name;
         $row[] = $ticket->phone;
-        $row[] = 155;
-        $row[] = 1;
-        $row[] = 'biljeska';
-        $row[] = 'docurl';
+        $row[] = '<img style="width:30px;height:auto;" src="https://cdn3.iconfinder.com/data/icons/world-flags-square-vol-3/48/Portugal-128.png"/>';
+        $row[] = $ticket->status;
+        $row[] = 'nepoznato';
+        $row[] = $ticket->note;
+        $row[] = '<a href="#">download</a>';
+
 
         $results['aaData'][] = $row;
    }
